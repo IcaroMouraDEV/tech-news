@@ -46,6 +46,25 @@ def scrape_next_page_link(html_content):
 # Requisito 4
 def scrape_news(html_content):
     """Seu código deve vir aqui"""
+    url = Selector(html_content).css(
+        '.pk-share-buttons-wrap').attrib['data-share-url']
+    title = Selector(html_content).css('.entry-title::text').get().strip('\xa0')
+    timestamp = Selector(html_content).css('.meta-date::text').get()
+    writer = Selector(html_content).css('.n::text').get()
+    reading_time = int(Selector(html_content).css(
+        '.meta-reading-time::text').get().split(' ')[0])
+    summary = Selector(html_content).css('.entry-content p').xpath('string()').get()
+    category = Selector(html_content).css('.label::text').get()
+
+    return {
+        'url': url,
+        'title': title,
+        'timestamp': timestamp,
+        'writer': writer,
+        'reading_time': reading_time,
+        'summary': summary.strip(),
+        'category': category
+    }
 
 
 # Requisito 5
