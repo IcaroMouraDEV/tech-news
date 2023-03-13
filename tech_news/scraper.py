@@ -8,7 +8,8 @@ def fetch(url):
     try:
         html = requests.get({
             'url': url,
-            'timeout': 3
+            'timeout': 3,
+            'user-agent': 'Fake user-agent'
         })
 
         time.sleep(1)
