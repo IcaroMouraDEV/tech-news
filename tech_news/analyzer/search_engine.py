@@ -1,6 +1,7 @@
 from tech_news.database import search_news
 from datetime import datetime
 
+
 # Requisito 7
 def search_by_title(title):
     """Seu código deve vir aqui"""
@@ -24,6 +25,7 @@ def search_by_date(date):
         ]
     except ValueError:
         raise ValueError('Data inválida')
+
 
 # Requisito 9
 def search_by_category(category):
